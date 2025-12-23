@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Артём Оськин — Шоураннер | Режиссёр</title>
+    <meta name="description" content="Шоураннер и режиссёр с 20-летним опытом. Микро-драмы, сериалы, реклама. Истории, которые остаются.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #161616;
+            --text-primary: #f5f5f5;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #c9a962;
+            --accent-hover: #e0c17a;
+            --border: #222222;
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, sans-serif;
+
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 3rem;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.85) 100%),
+                url('фото/frame_1.png') center/cover no-repeat;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% {
+                transform: translate(0%, 0%);
+            }
+            25% {
+                transform: translate(10%, -5%);
+            }
+            50% {
+                transform: translate(5%, 10%);
+            }
+            75% {
+                transform: translate(-5%, 5%);
+            }
+        }
+
+        /* Film grain overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-video-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 10, 0.4) 0%,
+                rgba(10, 10, 10, 0.6) 50%,
+                rgba(10, 10, 10, 0.95) 100%
+            );
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.7s;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.9s;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1.2s;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 8rem 3rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            width: 350px;
+            height: 467px;
+            margin-left: 120px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: grayscale(30%);
+            transition: var(--transition);
+            outline: 1px solid rgba(201, 169, 98, 0.3);
+            outline-offset: 15px;
+            border-radius: 8px;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .about-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-lead {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-quote {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            line-height: 1.8;
+        }
+
+        .about-specialization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .spec-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            background: var(--bg-primary);
+            padding: 5rem 3rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* ===== SHOWREEL ===== */
+        .showreel {
+            background:
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.7) 50%, rgba(10, 10, 10, 0.85) 100%),
+                url('фото/frame_2.png?v=2') center/cover no-repeat;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .showreel-play {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            cursor: pointer;
+        }
+
+        .play-btn-large {
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--text-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .play-btn-large svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--text-primary);
+            margin-left: 8px;
+        }
+
+        .showreel-play:hover .play-btn-large {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .showreel-play:hover .play-btn-large svg {
+            fill: var(--bg-primary);
+        }
+
+        .showreel-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* ===== METHOD ===== */
+        .method {
+            background:
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.75) 50%, rgba(10, 10, 10, 0.85) 100%),
+                url('фото/frame_5.png') -100% center/cover no-repeat;
+        }
+
+        .method-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .method-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .method-tab {
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .method-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .method-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .method-tab.active {
+            color: var(--accent);
+        }
+
+        .method-tab.active::after {
+            transform: scaleX(1);
+        }
+
+        .method-content {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            text-align: center;
+            min-height: 100px;
+        }
+
+        .method-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .method-text.active {
+            display: block;
+            animation: fadeUp 0.4s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PROJECTS IN DEVELOPMENT ===== */
+        .projects-dev {
+            background: var(--bg-secondary);
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 2rem;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .project-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .project-visual {
+            position: relative;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            clip-path: inset(0 round 20px);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-info {
+            padding: 2rem 0;
+        }
+
+        .project-genre {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-format {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-logline {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            color: var(--bg-primary);
+            background: var(--accent);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            background: #d4ba6a;
+            transform: translateY(-2px);
+        }
+
+        /* ===== WORKS ===== */
+        .works {
+            background: var(--bg-primary);
+        }
+
+        .works-filter {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active::after {
+            width: 100%;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .work-item {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .work-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .work-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+
+        .work-category {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        /* ===== EXPERIENCE ===== */
+        .experience {
+            background: var(--bg-secondary);
+        }
+
+        .exp-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-years {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+
+        .exp-role {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .exp-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .exp-clients {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .client-tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .exp-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* ===== BEHIND THE SCENES (Polaroid Style) ===== */
+        .bts {
+            background: url('фото/68c9a66e535bcc3441c9185af4110dce.jpg') center center / cover no-repeat;
+            position: relative;
+        }
+
+        .bts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.65) 0%, rgba(10, 10, 10, 0.85) 50%, rgba(10, 10, 10, 0.95) 100%);
+        }
+
+        .bts .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bts-grid {
+            position: relative;
+            height: 700px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bts-item {
+            position: absolute;
+            background: #f8f8f6;
+            padding: 5px 5px 18px 5px;
+            box-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.2),
+                0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        /* Чистый овал — фото по эллипсу */
+        .bts-item:nth-child(1)  { left: 38%;  top: 2%;   transform: rotate(-3deg);  z-index: 1; }
+        .bts-item:nth-child(2)  { left: 52%;  top: 3%;   transform: rotate(4deg);   z-index: 2; }
+        .bts-item:nth-child(3)  { left: 24%;  top: 6%;   transform: rotate(5deg);   z-index: 3; }
+        .bts-item:nth-child(4)  { left: 66%;  top: 7%;   transform: rotate(-4deg);  z-index: 4; }
+        .bts-item:nth-child(5)  { left: 10%;  top: 14%;  transform: rotate(-6deg);  z-index: 5; }
+        .bts-item:nth-child(6)  { left: 78%;  top: 15%;  transform: rotate(5deg);   z-index: 6; }
+        .bts-item:nth-child(7)  { left: 2%;   top: 28%;  transform: rotate(4deg);   z-index: 7; }
+        .bts-item:nth-child(8)  { left: 85%;  top: 29%;  transform: rotate(-5deg);  z-index: 8; }
+        .bts-item:nth-child(9)  { left: 0%;   top: 44%;  transform: rotate(-3deg);  z-index: 9; }
+        .bts-item:nth-child(10) { left: 86%;  top: 45%;  transform: rotate(4deg);   z-index: 10; }
+        .bts-item:nth-child(11) { left: 2%;   top: 60%;  transform: rotate(5deg);   z-index: 11; }
+        .bts-item:nth-child(12) { left: 84%;  top: 61%;  transform: rotate(-4deg);  z-index: 12; }
+        .bts-item:nth-child(13) { left: 10%;  top: 74%;  transform: rotate(-5deg);  z-index: 13; }
+        .bts-item:nth-child(14) { left: 78%;  top: 75%;  transform: rotate(6deg);   z-index: 14; }
+        .bts-item:nth-child(15) { left: 24%;  top: 82%;  transform: rotate(4deg);   z-index: 15; }
+        .bts-item:nth-child(16) { left: 66%;  top: 83%;  transform: rotate(-3deg);  z-index: 16; }
+        .bts-item:nth-child(17) { left: 38%;  top: 86%;  transform: rotate(-4deg);  z-index: 17; }
+        .bts-item:nth-child(18) { left: 52%;  top: 87%;  transform: rotate(5deg);   z-index: 18; }
+        /* Внутренний овал */
+        .bts-item:nth-child(19) { left: 28%;  top: 25%;  transform: rotate(3deg);   z-index: 19; }
+        .bts-item:nth-child(20) { left: 55%;  top: 26%;  transform: rotate(-4deg);  z-index: 20; }
+        .bts-item:nth-child(21) { left: 20%;  top: 45%;  transform: rotate(-3deg);  z-index: 21; }
+        .bts-item:nth-child(22) { left: 65%;  top: 46%;  transform: rotate(4deg);   z-index: 22; }
+        .bts-item:nth-child(23) { left: 30%;  top: 62%;  transform: rotate(5deg);   z-index: 23; }
+        .bts-item:nth-child(24) { left: 54%;  top: 63%;  transform: rotate(-3deg);  z-index: 24; }
+
+        .bts-item:hover {
+            transform: rotate(0deg) scale(1.2);
+            z-index: 50 !important;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.35),
+                0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .bts-item img {
+            width: 120px;
+            height: auto;
+            display: block;
+            filter: sepia(0.2) saturate(0.85) contrast(0.95) brightness(0.95);
+            transition: var(--transition);
+        }
+
+        .bts-item:hover img {
+            filter: sepia(0.1) saturate(1) contrast(1) brightness(1);
+        }
+
+        /* Lightbox для фото */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            background: none;
+            border: none;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.7;
+        }
+
+        .bts-caption {
+            position: absolute;
+            bottom: 8px;
+            left: 12px;
+            right: 12px;
+            text-align: center;
+        }
+
+        .bts-caption-title {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 0;
+        }
+
+        .bts-caption-meta {
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            color: #666;
+        }
+
+        /* ===== GENRES ===== */
+        .genres {
+            background: var(--bg-primary);
+            padding: 6rem 3rem;
+        }
+
+        .genres-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .genre-card {
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .genre-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .genre-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .genre-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .genre-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .contact-value a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-value a:hover {
+            color: var(--accent);
+        }
+
+        .contact-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: none;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16/9;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-card:nth-child(even) {
+                direction: ltr;
+            }
+
+            .works-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .genres-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .method-tabs {
+                justify-content: flex-start;
+                padding: 0 1rem;
+            }
+
+            .method-tab {
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .bts-grid {
+                height: 580px;
+                max-width: 700px;
+            }
+
+            .bts-item img {
+                width: 95px;
+            }
+
+            .bts-item {
+                padding: 4px 4px 14px 4px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .exp-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .genres-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .bts-grid {
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+
+            .bts-item {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                transform: rotate(0deg) !important;
+                padding: 3px 3px 10px 3px;
+            }
+
+            .bts-item img {
+                width: 70px;
+            }
+
+            .bts-item:hover {
+                transform: scale(1.1) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bts-item img {
+                width: 60px;
+            }
+
+            .bts-grid {
+                gap: 0.5rem;
+            }
+
+            .bts-item {
+                padding: 2px 2px 8px 2px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        /* Base fade */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fade from left */
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Fade from right */
+        .fade-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Fade with scale */
+        .fade-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+        .stagger-8 { transition-delay: 0.8s; }
+        .stagger-9 { transition-delay: 0.9s; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">Артём Оськин</a>
+        <ul class="nav-links">
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#showreel">Шоурил</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#method">Метод</a></li>
+            <li><a href="#works">Работы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Шоураннер · Режиссёр · Продюсер</p>
+            <h1 class="hero-title">Артём Оськин</h1>
+            <p class="hero-tagline">Режиссёр, который понимает и продумывает производство</p>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-left">
+                    <img src="фото/900142FC-B256-4264-B028-E5E6813B933F.JPG" alt="Артём Оськин">
+                </div>
+                <div class="about-content fade-right">
+                    <h2>Позиционирование</h2>
+                    <blockquote class="about-quote">
+                        «Я точно знаю, чего хочу. И — что важнее — знаю, как это объяснить и показать. Оператору, художнику, актёру, продюсеру. Каждому на его языке.
+                    </blockquote>
+                    <p class="about-text">
+                        Мы не просто снимаем — мы строим мир. А потом приглашаем туда зрителя. Чтобы он узнал себя. Или понял что-то, чего раньше не замечал.»
+                    </p>
+                    <div class="about-specialization">
+                        <span class="spec-tag">Драма</span>
+                        <span class="spec-tag">Драмеди</span>
+                        <span class="spec-tag">Триллер</span>
+                        <span class="spec-tag">Детектив</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showreel -->
+    <section class="showreel" id="showreel">
+        <div class="showreel-play fade-scale" onclick="openModal('https://player.vimeo.com/video/1017514931')">
+            <div class="play-btn-large">
+                <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+            </div>
+            <span class="showreel-label">Смотреть шоурил</span>
+        </div>
+    </section>
+
+    <!-- Авторские проекты -->
+    <section class="projects-dev" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Готовые пакеты для производства</p>
+                <h2 class="section-title">Авторские проекты</h2>
+            </div>
+
+            <!-- Project 1: Сеть -->
+            <div class="project-card fade-left">
+                <div class="project-visual">
+                    <img src="фото/frame_3.png?v=2" alt="Сеть">
+                </div>
+                <div class="project-info">
+                    <p class="project-genre">Микро-драма · Триллер</p>
+                    <h3 class="project-title">Сеть</h3>
+                    <p class="project-format">62 серии × 1.5-2 мин · Вертикальный формат 9:16</p>
+                    <p class="project-logline">
+                        Москва, 2002. Харизматичный Макс Царёв начинает с точки на Горбушке и строит
+                        империю мобильных телефонов. Но успех привлекает внимание силовиков —
+                        и начинается рейдерский захват. Выбор между бизнесом, любовью и безопасностью близких.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://artrecpro.github.io/net/" target="_blank" class="project-link">Подробнее о проекте</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Не придёшь -->
+            <div class="project-card fade-right">
+                <div class="project-visual">
+                    <img src="фото/frame_4.png?v=2" alt="Не придёшь не заблудившись">
+                </div>
+                <div class="project-info">
+                    <p class="project-genre">Драмеди</p>
+                    <h3 class="project-title">Не придёшь не заблудившись</h3>
+                    <p class="project-format">8 серий × 10 мин</p>
+                    <p class="project-logline">
+                        После смерти матери 35-летний циник Саша становится участником странного
+                        социального эксперимента, где ему платят за саморазрушение. Но встреча
+                        с психологом заставляет выбирать между удобным «раем» и настоящей жизнью.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://artrecpro.github.io/ne-pridesh/" target="_blank" class="project-link">Подробнее о проекте</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method -->
+    <section class="method" id="method">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Для продюсеров</p>
+                <h2 class="section-title">Мой метод</h2>
+            </div>
+            <div class="method-tabs fade-in">
+                <span class="method-tab active" data-method="0">Площадка</span>
+                <span class="method-tab" data-method="1">Препродакшен</span>
+                <span class="method-tab" data-method="2">Драматургия</span>
+                <span class="method-tab" data-method="3">Техника</span>
+                <span class="method-tab" data-method="4">CGI</span>
+                <span class="method-tab" data-method="5">Бюджет</span>
+                <span class="method-tab" data-method="6">Команда</span>
+                <span class="method-tab" data-method="7">Форс-мажор</span>
+            </div>
+            <div class="method-content fade-in">
+                <p class="method-text active" data-method="0">Умею держать смену — и знаю цену каждому часу переработки</p>
+                <p class="method-text" data-method="1">Всё продумываю на препродакшене: мудборды, план мизансцен, состояние сцены по свету. На площадку приходим с готовым видением</p>
+                <p class="method-text" data-method="2">Разбираю сценарий со стороны понимания характера: чего хочет герой, что ему мешает, где точка перелома. Сотворчество с автором — ищем вместе, как усилить историю</p>
+                <p class="method-text" data-method="3">Alexa или RED? Master Prime или Cooke? Зависит от истории. Знаю когда нужен Ronin, когда steadicam, а когда — штатив и терпение. Кран не ради крана — каждое техническое решение под конкретную эмоцию</p>
+                <p class="method-text" data-method="4">Знаю разницу между 'дорисуем' и 'это будет стоить как ещё одна смена'. Планирую CGI в препродакшене, а не в монтажной</p>
+                <p class="method-text" data-method="5">Каждое творческое решение проверяю через возможности сметы. Умею хотеть то, что можно реализовать</p>
+                <p class="method-text" data-method="6">Совместные решения для улучшения характеров и истории. Защищаю режиссёрскую версию — но слышу аргументы</p>
+                <p class="method-text" data-method="7">Проблема на площадке — наша проблема. Не ищем виноватых, ищем решение. Закрыли локацию, генератор сдох — снимаем план Б</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works -->
+    <section class="works" id="works">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Избранные работы</p>
+                <h2 class="section-title">Портфолио</h2>
+            </div>
+
+            <div class="works-filter">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="short">Короткометражки</button>
+                <button class="filter-btn" data-filter="promo">Промо</button>
+                <button class="filter-btn" data-filter="ads">Реклама</button>
+            </div>
+
+            <div class="works-grid">
+                <div class="work-item fade-scale stagger-1" data-category="series" onclick="window.open('https://wink.ru/episodes/russo-turisto-sezon-1-seriya-1-year-2015', '_blank')">
+                    <img src="фото/rt.png" alt="Руссо Туристо">
+                    <div class="work-overlay">
+                        <span class="work-category">Тревел-шоу · СТС</span>
+                        <h4 class="work-title">Руссо Туристо</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-2" data-category="short" onclick="openModal('https://player.vimeo.com/video/312675628')">
+                    <img src="фото/hope.png" alt="The Hope">
+                    <div class="work-overlay">
+                        <span class="work-category">Короткометражка</span>
+                        <h4 class="work-title">The Hope</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-3" data-category="promo" onclick="openModal('https://player.vimeo.com/video/892206681')">
+                    <img src="фото/pryatki.png" alt="Прятки">
+                    <div class="work-overlay">
+                        <span class="work-category">Промо · СТС</span>
+                        <h4 class="work-title">Прятки</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-4" data-category="promo" onclick="openModal('https://player.vimeo.com/video/800796204')">
+                    <img src="фото/pa.png" alt="Папины дочки">
+                    <div class="work-overlay">
+                        <span class="work-category">Промо · СТС</span>
+                        <h4 class="work-title">Папины дочки</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-5" data-category="promo" onclick="openModal('https://player.vimeo.com/video/800801229')">
+                    <img src="фото/mol.png" alt="Молодёжка">
+                    <div class="work-overlay">
+                        <span class="work-category">Промо · СТС</span>
+                        <h4 class="work-title">Молодёжка</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-6" data-category="promo" onclick="openModal('https://player.vimeo.com/video/322186393')">
+                    <img src="фото/mail.png" alt="Граффити">
+                    <div class="work-overlay">
+                        <span class="work-category">Промо · Mail.ru</span>
+                        <h4 class="work-title">Граффити</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-7" data-category="ads" onclick="openModal('https://player.vimeo.com/video/305920339')">
+                    <img src="фото/dec.png" alt="Декатлон">
+                    <div class="work-overlay">
+                        <span class="work-category">Реклама</span>
+                        <h4 class="work-title">Декатлон</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-8" data-category="short" onclick="openModal('https://player.vimeo.com/video/799738686')">
+                    <img src="фото/zah.png" alt="Захват">
+                    <div class="work-overlay">
+                        <span class="work-category">Короткометражка</span>
+                        <h4 class="work-title">Захват</h4>
+                    </div>
+                </div>
+                <div class="work-item fade-scale stagger-9" data-category="ads" onclick="openModal('https://player.vimeo.com/video/294567263')">
+                    <img src="фото/go.png" alt="Gorenje">
+                    <div class="work-overlay">
+                        <span class="work-category">Реклама</span>
+                        <h4 class="work-title">Gorenje</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Карьера</p>
+                <h2 class="section-title">Профессиональный путь</h2>
+            </div>
+
+            <div class="exp-timeline">
+                <div class="exp-item fade-in">
+                    <div class="exp-years">2023</div>
+                    <div class="exp-content">
+                        <h3 class="exp-role">Исполнительный продюсер</h3>
+                        <p class="exp-company">Костюмированный сериал «Пётр II» · Кинопоиск</p>
+                        <p class="exp-description">
+                            10 серий по 26 минут. Комедия в историческом сеттинге.
+                            Полный цикл производства от препродакшена до сдачи.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="exp-item fade-in">
+                    <div class="exp-years">2014–2024</div>
+                    <div class="exp-content">
+                        <h3 class="exp-role">Режиссёр-постановщик</h3>
+                        <p class="exp-company">Freelance · СТС, ТНТ, бренды</p>
+                        <p class="exp-description">
+                            Два сезона «Руссо Туристо» для СТС. Промо-кампании для телеканалов.
+                            Рекламные ролики для российских и международных брендов.
+                            Социальные короткометражки, отмеченные на фестивалях.
+                        </p>
+                        <div class="exp-clients">
+                            <span class="client-tag">СТС</span>
+                            <span class="client-tag">ТНТ</span>
+                            <span class="client-tag">Ростелеком</span>
+                            <span class="client-tag">Renault</span>
+                            <span class="client-tag">Faberlic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item fade-in">
+                    <div class="exp-years">2011–2024</div>
+                    <div class="exp-content">
+                        <h3 class="exp-role">Продюсер</h3>
+                        <p class="exp-company">Freelance</p>
+                        <p class="exp-description">
+                            Управление бюджетами от 500 тыс. до 500+ млн рублей.
+                            Музыкальные клипы для топ-артистов: Руки Вверх, МакSим, Мачете, Ёлка.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="exp-item fade-in">
+                    <div class="exp-years">2006–2021</div>
+                    <div class="exp-content">
+                        <h3 class="exp-role">Второй режиссёр (1AD)</h3>
+                        <p class="exp-company">Bazelevs, Action Film, AC Films, Okey-Dokey, Park Production</p>
+                        <p class="exp-description">
+                            ~120 рекламных проектов для крупнейших мировых и российских брендов.
+                            Координация съёмочных площадок. Работа с иностранными режиссёрами.
+                            Кино и сериалы: «Честный развод» (2021), «Алькапотня» (2021), «Последняя минута» (2010–2011).
+                        </p>
+                        <div class="exp-clients">
+                            <span class="client-tag">DANONE</span>
+                            <span class="client-tag">IKEA</span>
+                            <span class="client-tag">Sony</span>
+                            <span class="client-tag">KFC</span>
+                            <span class="client-tag">McDonald's</span>
+                            <span class="client-tag">Nestle</span>
+                            <span class="client-tag">Unilever</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-cta fade-in">
+                <a href="материалы/Оськин_А_А.pdf" class="btn" download>Скачать резюме (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind the Scenes -->
+    <section class="bts" id="bts">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">За кадром</p>
+                <h2 class="section-title">Behind the Scenes</h2>
+            </div>
+            <div class="bts-grid">
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_1219.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_0543.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_6366.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_1781.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_0675.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_6382.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_5114.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_1803.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_6394.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_6402.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_6740.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7253.JPG" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_125CB234ACBC-1.jpeg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/343564.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_5709.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_5710.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_5713.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7428.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7478.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7486.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7591.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7601.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7702.jpg" alt="За кадром"></div>
+                <div class="bts-item fade-in"><img src="фото/bts/IMG_7810.jpg" alt="За кадром"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="contact-title fade-in">Обсудим проект?</h2>
+            <p class="contact-subtitle fade-in">
+                Открыт для новых проектов — сериалы, фильмы, реклама.
+            </p>
+
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <p class="contact-label">Email</p>
+                    <p class="contact-value"><a href="mailto:artozdirector@gmail.com">artozdirector@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-label">Телефон</p>
+                    <p class="contact-value"><a href="tel:+79031551405">+7 (903) 155-14-05</a></p>
+                </div>
+                <div class="contact-item">
+                    <p class="contact-label">Telegram</p>
+                    <p class="contact-value"><a href="https://t.me/ArtREC8" target="_blank">@ArtREC8</a></p>
+                </div>
+            </div>
+
+            <div class="contact-socials fade-in">
+                <a href="https://vimeo.com/artemoskin" target="_blank" class="social-link" title="Vimeo">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/></svg>
+                </a>
+                <a href="https://www.kinopoisk.ru/name/4189891/" target="_blank" class="social-link" title="Кинопоиск">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </a>
+                <a href="https://www.imdb.com/name/nm8270103/" target="_blank" class="social-link" title="IMDb">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.31 9.588v.005c-.077-.048-.227-.07-.42-.07v4.815c.27 0 .44-.06.5-.165.062-.104.092-.405.092-.9v-2.953c0-.387-.022-.63-.073-.727-.04-.09-.13-.14-.27-.17l.17.165zm-1.758 4.535V9.383h.855c.405 0 .696.03.873.095.18.065.32.172.423.32.1.15.165.35.195.6.03.255.045.69.045 1.306 0 .615-.015 1.05-.045 1.305-.03.25-.095.45-.195.6-.1.15-.24.255-.42.32-.18.065-.47.095-.876.095h-.855v.1zm-1.48 1.02V7.91h1.64c.56 0 .96.03 1.2.1.24.065.45.18.64.345.19.165.33.4.42.7.09.3.135.73.135 1.29v3.26c0 .555-.045.985-.135 1.29-.09.3-.23.54-.42.705-.19.165-.405.28-.645.345-.24.065-.64.1-1.2.1h-1.635v-.002zm-1.83-5.323V7.91h1.17v7.14h-1.17v-1.89l-1.05 1.89h-1.2l1.38-2.37-1.38-2.88h1.2l.99 2.13.06-.11zm-4.75-1.607h1.17v5.52H3.49V8.213h1.003v-.002zm.586-1.765c-.19.19-.42.285-.69.285-.27 0-.5-.095-.69-.285a.933.933 0 01-.285-.69c0-.27.095-.5.285-.69.19-.19.42-.285.69-.285.27 0 .5.095.69.285.19.19.285.42.285.69 0 .27-.095.5-.285.69zM20.49 16.14c0 1.02-.83 1.85-1.85 1.85H5.36c-1.02 0-1.85-.83-1.85-1.85V7.86c0-1.02.83-1.85 1.85-1.85h13.28c1.02 0 1.85.83 1.85 1.85v8.28z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Артём Оськин. Все права защищены.</p>
+    </footer>
+
+    <!-- Photo Lightbox -->
+    <div class="lightbox" id="photoLightbox">
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="Фото">
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="videoModal">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-content">
+            <iframe id="modalIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in on scroll
+        const animatedElements = document.querySelectorAll('.fade-in, .fade-left, .fade-right, .fade-scale');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        animatedElements.forEach(el => observer.observe(el));
+
+        // Filter works
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                workItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Method tabs
+        document.querySelectorAll('.method-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const methodId = tab.dataset.method;
+
+                document.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.method-text').forEach(t => t.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.querySelector(`.method-text[data-method="${methodId}"]`).classList.add('active');
+            });
+        });
+
+        // Modal
+        function openModal(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = videoUrl + '?autoplay=1';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Close modal on background click
+        document.getElementById('videoModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Photo Lightbox
+        const lightbox = document.getElementById('photoLightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.bts-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
