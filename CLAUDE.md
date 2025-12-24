@@ -45,7 +45,7 @@
 
 ## Что осталось обсудить/сделать
 
-- [ ] **Open Graph превью** — Артём готовит креативное фото, потом добавить og:image теги
+- [x] **Open Graph превью** — готово (акварельный портрет)
 - [ ] **Works** — какие работы выложить (Артём подберёт)
 - [ ] **Experience** — как подать профессиональный путь
 - [ ] **BTS** — заменить placeholder-фото на реальные
@@ -63,11 +63,11 @@
 - [x] Изменён порядок работ в секции Works
 - [x] Обновлено описание сайта для шаринга
 
-### В процессе:
-- [ ] Open Graph картинка для превью ссылки (Артём делает креативное фото)
-  - Исходники: images/og_preview.jpg, images/photo2_rotated.jpg
-  - Варианты обработки сохранены: og_cinema.jpg, og_minimal.jpg, og_film.jpg и др.
-  - Когда будет готово фото → добавить og:image теги в index.html
+### Сделано:
+- [x] Open Graph картинка для превью ссылки
+  - Использован акварельный портрет (Gen4 ink sketch)
+  - Файл: images/og_image.jpg
+  - OG и Twitter Card теги добавлены в index.html
 
 ---
 
@@ -97,11 +97,24 @@ ArtREC/
     └── artem_oskin_portfolio.html  # Исходный прототип (референс)
 ```
 
-## Запуск
+## Запуск (локально)
 
 ```bash
 bash /root/ArtREC/serve.sh
 ```
+
+## Деплой на прод
+
+Сайт хостится на GitHub Pages. Деплой автоматический через git push:
+
+```bash
+git add .
+git commit -m "описание"
+git push origin master
+```
+
+Репозиторий: https://github.com/ArtRecPro/artemoskin.ru.git
+Домен: https://artemoskin.ru
 
 ---
 
