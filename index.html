@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Unbounded:wght@300;400;700;900&family=Raleway:wght@300;400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -665,6 +666,58 @@
             display: block;
             border-radius: 20px;
             clip-path: inset(0 round 20px);
+        }
+
+        .project-visual-hero {
+            position: relative;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: url('images/yavlenie.jpg') center/cover no-repeat;
+        }
+
+        .project-visual-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(12,9,5,0.88) 0%, rgba(12,9,5,0.55) 60%, rgba(12,9,5,0.25) 100%),
+                        linear-gradient(to bottom, rgba(12,9,5,0.35) 0%, rgba(12,9,5,0.05) 40%, rgba(12,9,5,0.65) 100%);
+            border-radius: 20px;
+        }
+
+        .project-visual-hero-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+        }
+
+        .project-visual-hero-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-visual-hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-visual-hero-sub {
+            font-size: 0.85rem;
+            color: rgba(240, 230, 200, 0.75);
+            line-height: 1.5;
+            max-width: 28ch;
         }
 
         .project-badge {
@@ -1610,6 +1663,78 @@
         .stagger-7 { transition-delay: 0.7s; }
         .stagger-8 { transition-delay: 0.8s; }
         .stagger-9 { transition-delay: 0.9s; }
+
+        /* ===== ЯВЛЕНИЕ — hero внутри project-visual ===== */
+        @keyframes yavStatPulse{0%,100%{opacity:1;text-shadow:0 0 0 rgba(201,168,76,0);}50%{opacity:0.75;text-shadow:0 0 18px rgba(201,168,76,0.6);}}
+
+        .yav-wrap{
+            background-image: url('images/yavlenie.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 800 / 390;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .yav-overlay{
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to right, rgba(12,9,5,0.92) 0%, rgba(12,9,5,0.65) 55%, rgba(12,9,5,0.30) 100%),
+                linear-gradient(to bottom, rgba(12,9,5,0.40) 0%, rgba(12,9,5,0.10) 40%, rgba(12,9,5,0.70) 100%);
+        }
+        .yav-content{
+            position: relative;
+            z-index: 2;
+            padding: 1.2rem 1.5rem;
+        }
+        .yav-eyebrow{
+            font-family: 'Raleway', sans-serif;
+            font-size: 8px; font-weight: 700; letter-spacing: 0.28em;
+            text-transform: uppercase; color: rgba(201,168,76,0.85);
+            margin-bottom: 6px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .yav-eyebrow::before{ content:''; display:block; width:16px; height:1px; background:rgba(201,168,76,0.35); flex-shrink:0; }
+        .yav-title{
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(22px, 2.8vw, 36px);
+            font-weight: 900; line-height: 0.9; color: #f0e6c8; letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .yav-title em{ font-style: italic; color: #c9a84c; display: block; }
+        .yav-orn{ display:flex; align-items:center; gap:8px; margin: 6px 0 8px; }
+        .yav-orn-line{ flex:1; max-width:36px; height:1px; background:linear-gradient(90deg,rgba(201,168,76,0.35),transparent); }
+        .yav-orn-dot{ width:3px; height:3px; background:rgba(201,168,76,0.35); transform:rotate(45deg); flex-shrink:0; }
+        .yav-tagline{
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 11px; font-weight: 400; color: rgba(240,230,200,0.85);
+            line-height: 1.5; margin-bottom: 4px;
+        }
+        .yav-tagline strong{ color: #c9a84c; font-weight: 700; font-style: italic; }
+        .yav-sub{
+            font-family: 'Raleway', sans-serif;
+            font-size: 10px; font-style: italic; color: rgba(240,230,200,0.75);
+            margin-bottom: 10px;
+        }
+        .yav-stats{
+            display: flex; gap: 16px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(201,168,76,0.15);
+        }
+        .yav-stat-num{
+            font-family: 'Unbounded', sans-serif;
+            font-size: 16px; font-weight: 700; color: #c9a84c;
+            line-height: 1; margin-bottom: 3px;
+            animation: yavStatPulse 2.8s ease-in-out infinite;
+        }
+        .yav-stat-label{
+            font-family: 'Raleway', sans-serif;
+            font-size: 7px; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: rgba(240,230,200,0.75);
+        }
     </style>
 </head>
 <body>
@@ -1736,6 +1861,39 @@
                     </p>
                     <div class="project-links">
                         <a href="https://artrecpro.github.io/ne-pridesh/" target="_blank" class="project-link">Подробнее о проекте</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Явление -->
+            <div class="project-card fade-left">
+                <div class="project-visual yav-wrap">
+                    <div class="yav-overlay"></div>
+                    <div class="yav-content">
+                        <div class="yav-eyebrow">Россия · 2026 · Оригинальный формат</div>
+                        <h3 class="yav-title">Явле<em>ние</em></h3>
+                        <div class="yav-orn">
+                            <div class="yav-orn-line"></div>
+                            <div class="yav-orn-dot"></div>
+                            <div class="yav-orn-line" style="background:linear-gradient(270deg,rgba(201,168,76,0.35),transparent)"></div>
+                        </div>
+                        <p class="yav-tagline">Первое шоу в России,<br>где <strong>обычный человек является миру</strong></p>
+                        <p class="yav-sub">О людях, которых индустрия ещё не знает. Но скоро увидит.</p>
+                        <div class="yav-stats">
+                            <div><div class="yav-stat-num">8</div><div class="yav-stat-label">Выпусков в сезоне</div></div>
+                            <div><div class="yav-stat-num">4</div><div class="yav-stat-label">Жанра и эпохи</div></div>
+                            <div><div class="yav-stat-num">4</div><div class="yav-stat-label">Звезды-наставника</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <p class="project-genre">Шоу · Оригинальный формат</p>
+                    <h3 class="project-title">Явление</h3>
+                    <p class="project-logline">
+                        Обычные люди без актёрского образования играют сцены из литературных произведений вместе со звёздами. Два мира в одном экране — студия с жюри и живой аудиторией, и съёмочная площадка с декорациями под эпоху, профессиональным светом и несколькими камерами. Соревновательный формат.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://artrecpro.github.io/yavlenie/" target="_blank" class="project-link">Подробнее о проекте</a>
                     </div>
                 </div>
             </div>
